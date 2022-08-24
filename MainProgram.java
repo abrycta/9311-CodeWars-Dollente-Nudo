@@ -35,6 +35,21 @@ public class MainProgram {
         return result.toString();
     }
 
+    public static String order(String words) {
+        if(words.length() == 0) return "";
+        String[] wordArray = words.split("\\s+");
+        String[] sortedArr = new String[wordArray.length];
+
+        // iterate through every word
+        for(int i = 0; i < wordArray.length; i++) {
+            for(char character : wordArray[i].toCharArray()) {
+                if(Character.isDigit(character))
+                    sortedArr[Character.getNumericValue(character) - 1] = wordArray[i];
+            }
+        }
+        return String.join(" ", sortedArr);
+    }
+
     // Complete Ones and Zeros (7 kyu)
     public static int convertBinaryArrayToInt(List<Integer> binary) {
         int[] binaryEquivalent = {1, 2, 4, 8, 16, 32, 64, 128};
@@ -49,6 +64,6 @@ public class MainProgram {
     }
 
     public static void main(String[] args) {
-        System.out.println(toJadenCase(null));
+        System.out.println(order("is2 Thi1s T4est 3a"));
     }
 }
