@@ -18,6 +18,23 @@ public class MainProgram {
         }
         return ((temp * temp) == n);
     }
+    // Complete Jaden Casing Strings (7 kyu)
+    public static String toJadenCase(String phrase) {
+        if (phrase == null || phrase == "") return null;
+        StringBuilder result = new StringBuilder();
+        Character[] chars =
+                phrase.chars().mapToObj(c -> (char) c).toArray(Character[]::new);
+        for (int i = 0; i < chars.length; i++) {
+            // test for beginning char
+            if (i == 0) chars[i] = Character.toUpperCase(chars[i]);
+            else if (chars[i - 1] == ' ') {
+                chars[i] = Character.toUpperCase(chars[i]);
+            }
+            result.append(chars[i]);
+        }
+        return result.toString();
+    }
+
     // Complete Ones and Zeros (7 kyu)
     public static int convertBinaryArrayToInt(List<Integer> binary) {
         int[] binaryEquivalent = {1, 2, 4, 8, 16, 32, 64, 128};
@@ -32,6 +49,6 @@ public class MainProgram {
     }
 
     public static void main(String[] args) {
-        System.out.println(convertBinaryArrayToInt(new ArrayList<>(Arrays.asList(0, 0, 0, 1))));
+        System.out.println(toJadenCase(null));
     }
 }
