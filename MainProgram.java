@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class MainProgram {
 
@@ -35,6 +33,7 @@ public class MainProgram {
         return result.toString();
     }
 
+    // Complete Your order, please (6 kyu)
     public static String order(String words) {
         if(words.length() == 0) return "";
         String[] wordArray = words.split("\\s+");
@@ -61,6 +60,20 @@ public class MainProgram {
             binaryIndex++;
         }
         return returnVal;
+    }
+
+    // complete Two Sum (6 kyu)
+    public static int[] twoSum(int[] numbers, int target) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+        for (int i = 0; i < numbers.length; i++) {
+            int complement = target - numbers[i];
+            if (numMap.containsKey(complement)) {
+                return new int[] { numMap.get(complement), i };
+            } else {
+                numMap.put(numbers[i], i);
+            }
+        }
+        return new int[] {};
     }
 
     public static void main(String[] args) {
