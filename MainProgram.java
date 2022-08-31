@@ -174,6 +174,9 @@ public class MainProgram {
         int squaredDigit = digit * digit;
         return squaredDigit + (squaredDigit < BASE ? BASE : BASE * BASE) * squareDigits(n / BASE);
     }
+    
+    // Complete Permutations: 4 Kyu
+    
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
