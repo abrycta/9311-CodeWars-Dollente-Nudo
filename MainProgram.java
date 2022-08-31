@@ -203,42 +203,19 @@ public class MainProgram {
         sb.setCharAt(j, t);
     }
     
+    public static String formatDuration(int seconds) {
+        return seconds == 0 ? "now" : Arrays.stream(new String[]{
+                format("year", (seconds / 31536000)),
+                format("day", (seconds / 86400) % 365),
+                format("hour", (seconds / 3600) % 24),
+                format("minute", (seconds / 60) % 60),
+                format("second", (seconds % 3600) % 60)})
+                .filter(e -> e != "")
+                .collect(Collectors.joining(", "))
+                .replaceAll(", (?!.+,)", " and ");
+    }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println(order("is2 Thi1s T4est 3a"));
-        System.out.println("Available methods:");
-        System.out.println("1. Jaden Casing String." +
-                "2. Your order." +
-                "3. Ones and Zeros." +
-                "4. Two Sum." +
-                "5. Check square." +
-                "6. Rock, Paper, Scissors, Lizard, Spock. " +
-                "7. Compare Powers. " +
-                "8. Square Digits.");
-        System.out.println("Input the number of the method you would like to run. \n:");
-
-        int input = scanner.nextInt();
-
-        /*
-        String str;
-        switch (input){
-            case 1:
-                System.out.println("Input string to switch casing: ");
-                System.out.println(toJadenCase(scanner.nextLine()));
-                break;
-            case 2:
-                System.out.println("Input your order: ");
-                System.out.println(order(scanner.nextLine()));
-                break;
-            case 3:
-                System.out.println();
-                break;
-            case 4:
-                System.out.println("Input");
-        }
-
-         */
+    public static String format(String s, int time) {
+        return time == 0 ? "" : time + " " + s + (time == 1 ? "" : "s");
     }
 }
